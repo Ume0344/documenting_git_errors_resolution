@@ -21,3 +21,18 @@ git push
 ```
 
 If you now go to the git repository on GitHub, the files mentioned in .gitignore will be hidden.
+
+## Issue 2 - kubectl does not work in Openlens terminal
+**Issue**: kubectl works in system terminal but not in openlens terminal.
+
+### **Resolution:**
+- The problem occurs when kubectl is using binary that is installed with openlens.
+- Check the path of kubectl in openlens terminal.
+```
+which kubectl
+```
+- If the path points to kubectl binary that comes with openlens (i.e, `$HOME/Library/Application Support/OpenLens/binaries/kubectl/<kubectl_version>`), override this path with kubectl system path (`/opt/homebrew/bin/kubectl`)
+- Through cli, it can be changed by running the following command;
+```
+export PATH=$(echo $PATH | sed -e 's|:$HOME/Library/Application Support/OpenLens/binaries/kubectl/<kubectl_version>||g' -e 's|$HOME/Library/Application Support/OpenLens/binaries/kubectl/<kubectl_version>:||g' -e 's|$HOME/Library/Application Support/OpenLens/binaries/kubectl/<kubectl_version>||g')
+```
