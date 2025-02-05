@@ -32,7 +32,10 @@ If you now go to the git repository on GitHub, the files mentioned in .gitignore
 which kubectl
 ```
 - If the path points to kubectl binary that comes with openlens (i.e, `$HOME/Library/Application Support/OpenLens/binaries/kubectl/<kubectl_version>`), override this path with kubectl system path (`/opt/homebrew/bin/kubectl`)
-- Through cli, it can be changed by running the following command;
+- Through cli, it can be changed by running the following commands (for mac);
 ```
 export PATH=$(echo $PATH | sed -e 's|:$HOME/Library/Application Support/OpenLens/binaries/kubectl/<kubectl_version>||g' -e 's|$HOME/Library/Application Support/OpenLens/binaries/kubectl/<kubectl_version>:||g' -e 's|$HOME/Library/Application Support/OpenLens/binaries/kubectl/<kubectl_version>||g')
+```
+```
+export PATH=$PATH:/opt/homebrew/bin/kubectl
 ```
